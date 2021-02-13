@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		1F3872A625D072C6000DCCD8 /* ViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3872A425D072C6000DCCD8 /* ViewWrapper.swift */; };
 		1F3872AE25D07476000DCCD8 /* MetalCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */; };
 		1F3872AF25D07476000DCCD8 /* MetalCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */; };
+		1F44CB1325D7845C00B92BA8 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 1F44CB1225D7845C00B92BA8 /* SwiftProtobuf */; };
+		1F44CB1C25D78BD100B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */; };
+		1F44CB1D25D78BD100B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,7 @@
 		1F38729F25D072B8000DCCD8 /* ViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWrapper.swift; sourceTree = "<group>"; };
 		1F3872A425D072C6000DCCD8 /* ViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWrapper.swift; sourceTree = "<group>"; };
 		1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCameraView.swift; sourceTree = "<group>"; };
+		1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARC.pb.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F44CB1325D7845C00B92BA8 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,7 @@
 		1F38727525D06875000DCCD8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */,
 				1F38727625D06875000DCCD8 /* ARCViewerApp.swift */,
 				1F38727725D06875000DCCD8 /* ContentView.swift */,
 				1F38727825D06876000DCCD8 /* Assets.xcassets */,
@@ -137,6 +143,9 @@
 			dependencies = (
 			);
 			name = "ARCViewer (macOS)";
+			packageProductDependencies = (
+				1F44CB1225D7845C00B92BA8 /* SwiftProtobuf */,
+			);
 			productName = "ARCViewer (macOS)";
 			productReference = 1F38728525D06877000DCCD8 /* ARCViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 1F38727025D06875000DCCD8;
+			packageReferences = (
+				1F44CB1125D7845C00B92BA8 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
 			productRefGroup = 1F38727E25D06877000DCCD8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -204,6 +216,7 @@
 				1F3872A025D072B8000DCCD8 /* ViewWrapper.swift in Sources */,
 				1F38729B25D070F2000DCCD8 /* ContentViewShaders.metal in Sources */,
 				1F3872AE25D07476000DCCD8 /* MetalCameraView.swift in Sources */,
+				1F44CB1C25D78BD100B92BA8 /* ARC.pb.swift in Sources */,
 				1F38728B25D06877000DCCD8 /* ContentView.swift in Sources */,
 				1F38728925D06877000DCCD8 /* ARCViewerApp.swift in Sources */,
 			);
@@ -216,6 +229,7 @@
 				1F38729C25D070F2000DCCD8 /* ContentViewShaders.metal in Sources */,
 				1F3872A625D072C6000DCCD8 /* ViewWrapper.swift in Sources */,
 				1F3872AF25D07476000DCCD8 /* MetalCameraView.swift in Sources */,
+				1F44CB1D25D78BD100B92BA8 /* ARC.pb.swift in Sources */,
 				1F38728C25D06877000DCCD8 /* ContentView.swift in Sources */,
 				1F38728A25D06877000DCCD8 /* ARCViewerApp.swift in Sources */,
 			);
@@ -453,6 +467,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F44CB1125D7845C00B92BA8 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F44CB1225D7845C00B92BA8 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F44CB1125D7845C00B92BA8 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1F38727125D06875000DCCD8 /* Project object */;
 }

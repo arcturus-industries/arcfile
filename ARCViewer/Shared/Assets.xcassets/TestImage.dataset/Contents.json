@@ -1,0 +1,13 @@
+{
+  "data" : [
+    {
+      "filename" : "smith-tower.jpeg",
+      "idiom" : "universal",
+      "universal-type-identifier" : "public.jpeg"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -10,6 +10,12 @@ We want ARC file to work well for those tasks, but also a wider range of tasks l
 
 [Join us in the Discussions section](https://github.com/arcturus-industries/arcfile/discussions/1)
 
+
+```
+protoc --swift_out=. protobuf/ARC.proto 
+```
+
+
 ### News:
 
 **2021.2.6:** Repository created & development started.
