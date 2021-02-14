@@ -15,10 +15,15 @@ We want ARC file to work well for those tasks, but also a wider range of tasks l
 protoc --swift_out=. protobuf/ARC.proto 
 ```
 
+### Links:
+
+[GitHub: FlatBuffers `swift/` directory fork for Swift Package Manager (SPM) compatibility](https://github.com/arcturus-industries/flatbuffers-swift)
 
 ### News:
 
 **2021.2.6:** Repository created & development started.
+
+**2021.2.13:** Trivial Protobuf and FlatBuffers integration has been added to a testbench ARCViewer project (Mac/iOS for now).
 
 
 

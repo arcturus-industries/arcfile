@@ -1,0 +1,18 @@
+// Example IDL file for our monster's schema.
+namespace arcfile;
+
+enum Encoding:byte { H264 = 0, HEVC = 1, JPG = 2, PNG = 3, RAW_YUV = 4, RAW_RGB = 5,RAW_YCBCR = 6 }
+
+table Header
+{
+    entry_size:uint;
+}
+
+table Image
+{
+    image_encoding:Encoding;
+    image_timestamp:double;
+    image_data:[byte];
+}
+
+root_type Image;
