@@ -3,6 +3,12 @@
 
 syntax = "proto3";
 
+message ARC_WrappedMessage {
+    oneof wrapped_message {
+        ARC_ColorImage color_image = 1;
+    }
+}
+
 enum ARC_ImageEncoding {
     H264 = 0;
     HEVC = 1; //aka H265

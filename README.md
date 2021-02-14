@@ -12,12 +12,17 @@ We want ARC file to work well for those tasks, but also a wider range of tasks l
 
 
 ```
-protoc --swift_out=. protobuf/ARC.proto 
+protoc --swift_out=. format/ARC.proto 
+flatc --swift format/ARC.fbs
 ```
 
 ### Links:
 
 [GitHub: FlatBuffers `swift/` directory fork for Swift Package Manager (SPM) compatibility](https://github.com/arcturus-industries/flatbuffers-swift)
+
+### Thanks:
+
+Thanks to [Vikas Reddy](https://twitter.com/vikasreddy) for sharing reference code he developed for realtime 3D capture.
 
 ### News:
 

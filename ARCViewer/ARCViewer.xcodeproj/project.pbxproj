@@ -20,11 +20,11 @@
 		1F3872AE25D07476000DCCD8 /* MetalCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */; };
 		1F3872AF25D07476000DCCD8 /* MetalCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */; };
 		1F44CB1325D7845C00B92BA8 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 1F44CB1225D7845C00B92BA8 /* SwiftProtobuf */; };
-		1F44CB1C25D78BD100B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */; };
-		1F44CB1D25D78BD100B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */; };
 		1F44CB2225D866B300B92BA8 /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 1F44CB2125D866B300B92BA8 /* FlatBuffers */; };
-		1F44CB2625D87B0E00B92BA8 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB2525D87B0E00B92BA8 /* ARC.flatbuffers.swift */; };
-		1F44CB2725D87B0E00B92BA8 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB2525D87B0E00B92BA8 /* ARC.flatbuffers.swift */; };
+		1F44CB2B25D8E96C00B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */; };
+		1F44CB2C25D8E96C00B92BA8 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */; };
+		1F44CB3225D8E99500B92BA8 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */; };
+		1F44CB3325D8E99500B92BA8 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +40,10 @@
 		1F38729F25D072B8000DCCD8 /* ViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWrapper.swift; sourceTree = "<group>"; };
 		1F3872A425D072C6000DCCD8 /* ViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWrapper.swift; sourceTree = "<group>"; };
 		1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCameraView.swift; sourceTree = "<group>"; };
-		1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARC.pb.swift; sourceTree = "<group>"; };
-		1F44CB2525D87B0E00B92BA8 /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARC.flatbuffers.swift; sourceTree = "<group>"; };
+		1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../../format/ARC.pb.swift; sourceTree = "<group>"; };
+		1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
+		1F44CB3725D8EBF400B92BA8 /* ARC.fbs */ = {isa = PBXFileReference; lastKnownFileType = text; name = ARC.fbs; path = ../../format/ARC.fbs; sourceTree = "<group>"; };
+		1F44CB3825D8EBF400B92BA8 /* ARC.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; name = ARC.proto; path = ../../format/ARC.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		1F38727025D06875000DCCD8 = {
 			isa = PBXGroup;
 			children = (
+				1F44CB3625D8EBE000B92BA8 /* Format */,
 				1F38727525D06875000DCCD8 /* Shared */,
 				1F38727F25D06877000DCCD8 /* iOS */,
 				1F38728625D06877000DCCD8 /* macOS */,
@@ -77,8 +80,8 @@
 		1F38727525D06875000DCCD8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				1F44CB2525D87B0E00B92BA8 /* ARC.flatbuffers.swift */,
-				1F44CB1B25D78BD100B92BA8 /* ARC.pb.swift */,
+				1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */,
+				1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */,
 				1F38727625D06875000DCCD8 /* ARCViewerApp.swift */,
 				1F38727725D06875000DCCD8 /* ContentView.swift */,
 				1F38727825D06876000DCCD8 /* Assets.xcassets */,
@@ -114,6 +117,15 @@
 				1F3872A425D072C6000DCCD8 /* ViewWrapper.swift */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		1F44CB3625D8EBE000B92BA8 /* Format */ = {
+			isa = PBXGroup;
+			children = (
+				1F44CB3725D8EBF400B92BA8 /* ARC.fbs */,
+				1F44CB3825D8EBF400B92BA8 /* ARC.proto */,
+			);
+			path = Format;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +235,9 @@
 			files = (
 				1F3872A025D072B8000DCCD8 /* ViewWrapper.swift in Sources */,
 				1F38729B25D070F2000DCCD8 /* ContentViewShaders.metal in Sources */,
-				1F44CB2625D87B0E00B92BA8 /* ARC.flatbuffers.swift in Sources */,
+				1F44CB3225D8E99500B92BA8 /* ARC.flatbuffers.swift in Sources */,
 				1F3872AE25D07476000DCCD8 /* MetalCameraView.swift in Sources */,
-				1F44CB1C25D78BD100B92BA8 /* ARC.pb.swift in Sources */,
+				1F44CB2B25D8E96C00B92BA8 /* ARC.pb.swift in Sources */,
 				1F38728B25D06877000DCCD8 /* ContentView.swift in Sources */,
 				1F38728925D06877000DCCD8 /* ARCViewerApp.swift in Sources */,
 			);
@@ -237,9 +249,9 @@
 			files = (
 				1F38729C25D070F2000DCCD8 /* ContentViewShaders.metal in Sources */,
 				1F3872A625D072C6000DCCD8 /* ViewWrapper.swift in Sources */,
-				1F44CB2725D87B0E00B92BA8 /* ARC.flatbuffers.swift in Sources */,
+				1F44CB3325D8E99500B92BA8 /* ARC.flatbuffers.swift in Sources */,
 				1F3872AF25D07476000DCCD8 /* MetalCameraView.swift in Sources */,
-				1F44CB1D25D78BD100B92BA8 /* ARC.pb.swift in Sources */,
+				1F44CB2C25D8E96C00B92BA8 /* ARC.pb.swift in Sources */,
 				1F38728C25D06877000DCCD8 /* ContentView.swift in Sources */,
 				1F38728A25D06877000DCCD8 /* ARCViewerApp.swift in Sources */,
 			);

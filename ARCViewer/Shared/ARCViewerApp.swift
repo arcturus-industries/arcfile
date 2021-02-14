@@ -83,14 +83,18 @@ struct ARCViewerApp: App {
         let outstream = OutputStream.init(url: fileUrl, append: false)!
         outstream.open()
         if let asset = NSDataAsset(name: "TestImage") {
+            
             var image = ARC_ColorImage()
             image.imageEncoding = ARC_ImageEncoding.jpg
             image.timestampInSeconds = 0
             image.imageData = asset.data
             
+            var wrappedMsg = ARC_WrappedMessage()
+            wrappedMsg.colorImage = image
+            
             // Write the image twice
-            try! BinaryDelimited.serialize(message: image, to: outstream)
-            try! BinaryDelimited.serialize(message: image, to: outstream)
+            try! BinaryDelimited.serialize(message: wrappedMsg, to: outstream)
+            try! BinaryDelimited.serialize(message: wrappedMsg, to: outstream)
         }
         outstream.close()
     }
@@ -102,8 +106,8 @@ struct ARCViewerApp: App {
         
         while true {
             do {
-                let image = try BinaryDelimited.parse(messageType: ARC_ColorImage.self, from: instream)
-                print("Got image with \(image.imageData.count) bytes")
+                let wrappedMsg = try BinaryDelimited.parse(messageType: ARC_WrappedMessage.self, from: instream)
+                print("Got image with \(wrappedMsg.colorImage.imageData.count) bytes")
             } catch BinaryDelimited.Error.truncated {
                 // End of file
                 break
