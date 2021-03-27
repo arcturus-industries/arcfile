@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		138F6195260ECDD800E109DB /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 138F6194260ECDD800E109DB /* SwiftProtobuf */; };
 		138F6197260ECDD800E109DB /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 138F6196260ECDD800E109DB /* FlatBuffers */; };
+		138F6213260ED6F400E109DB /* ARCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F6212260ED6F400E109DB /* ARCTests.swift */; };
+		138F6221260EE23400E109DB /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */; };
+		138F6222260EE23400E109DB /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */; };
 		1F38728925D06877000DCCD8 /* ARCViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727625D06875000DCCD8 /* ARCViewerApp.swift */; };
 		1F38728A25D06877000DCCD8 /* ARCViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727625D06875000DCCD8 /* ARCViewerApp.swift */; };
 		1F38728B25D06877000DCCD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727725D06875000DCCD8 /* ContentView.swift */; };
@@ -29,7 +32,20 @@
 		1F44CB3325D8E99500B92BA8 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		138F6215260ED6F400E109DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F38727125D06875000DCCD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F38728425D06877000DCCD8;
+			remoteInfo = "ARCViewer (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		138F6210260ED6F400E109DB /* ARCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		138F6212260ED6F400E109DB /* ARCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCTests.swift; sourceTree = "<group>"; };
+		138F6214260ED6F400E109DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F38727625D06875000DCCD8 /* ARCViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCViewerApp.swift; sourceTree = "<group>"; };
 		1F38727725D06875000DCCD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1F38727825D06876000DCCD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +65,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		138F620D260ED6F400E109DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F38727A25D06877000DCCD8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +100,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		138F6211260ED6F400E109DB /* ARCTests */ = {
+			isa = PBXGroup;
+			children = (
+				138F6212260ED6F400E109DB /* ARCTests.swift */,
+				138F6214260ED6F400E109DB /* Info.plist */,
+			);
+			path = ARCTests;
+			sourceTree = "<group>";
+		};
 		1F38727025D06875000DCCD8 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +116,7 @@
 				1F38727525D06875000DCCD8 /* Shared */,
 				1F38727F25D06877000DCCD8 /* iOS */,
 				1F38728625D06877000DCCD8 /* macOS */,
+				138F6211260ED6F400E109DB /* ARCTests */,
 				1F38727E25D06877000DCCD8 /* Products */,
 				138F6193260ECDD800E109DB /* Frameworks */,
 			);
@@ -108,6 +141,7 @@
 			children = (
 				1F38727D25D06877000DCCD8 /* ARCViewer.app */,
 				1F38728525D06877000DCCD8 /* ARCViewer.app */,
+				138F6210260ED6F400E109DB /* ARCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +178,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		138F620F260ED6F400E109DB /* ARCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 138F6217260ED6F400E109DB /* Build configuration list for PBXNativeTarget "ARCTests" */;
+			buildPhases = (
+				138F620C260ED6F400E109DB /* Sources */,
+				138F620D260ED6F400E109DB /* Frameworks */,
+				138F620E260ED6F400E109DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				138F6216260ED6F400E109DB /* PBXTargetDependency */,
+			);
+			name = ARCTests;
+			packageProductDependencies = (
+			);
+			productName = ARCTests;
+			productReference = 138F6210260ED6F400E109DB /* ARCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1F38727C25D06877000DCCD8 /* ARCViewer (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F38729125D06877000DCCD8 /* Build configuration list for PBXNativeTarget "ARCViewer (iOS)" */;
@@ -192,9 +246,13 @@
 		1F38727125D06875000DCCD8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					138F620F260ED6F400E109DB = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 1F38728425D06877000DCCD8;
+					};
 					1F38727C25D06877000DCCD8 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -222,11 +280,19 @@
 			targets = (
 				1F38727C25D06877000DCCD8 /* ARCViewer (iOS) */,
 				1F38728425D06877000DCCD8 /* ARCViewer (macOS) */,
+				138F620F260ED6F400E109DB /* ARCTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		138F620E260ED6F400E109DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F38727B25D06877000DCCD8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +312,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		138F620C260ED6F400E109DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138F6222260EE23400E109DB /* ARC.pb.swift in Sources */,
+				138F6221260EE23400E109DB /* ARC.flatbuffers.swift in Sources */,
+				138F6213260ED6F400E109DB /* ARCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F38727925D06877000DCCD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,7 +352,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		138F6216260ED6F400E109DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F38728425D06877000DCCD8 /* ARCViewer (macOS) */;
+			targetProxy = 138F6215260ED6F400E109DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		138F6218260ED6F400E109DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ARCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ARCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARCViewer.app/Contents/MacOS/ARCViewer";
+			};
+			name = Debug;
+		};
+		138F6219260ED6F400E109DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ARCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = test.ARCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARCViewer.app/Contents/MacOS/ARCViewer";
+			};
+			name = Release;
+		};
 		1F38728F25D06877000DCCD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -394,6 +520,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -415,6 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -439,6 +567,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -461,6 +590,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -478,6 +608,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		138F6217260ED6F400E109DB /* Build configuration list for PBXNativeTarget "ARCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				138F6218260ED6F400E109DB /* Debug */,
+				138F6219260ED6F400E109DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1F38727425D06875000DCCD8 /* Build configuration list for PBXProject "ARCViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
