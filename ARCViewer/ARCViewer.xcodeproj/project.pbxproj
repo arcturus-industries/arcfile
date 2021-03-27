@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		138F6195260ECDD800E109DB /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 138F6194260ECDD800E109DB /* SwiftProtobuf */; };
+		138F6197260ECDD800E109DB /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 138F6196260ECDD800E109DB /* FlatBuffers */; };
 		1F38728925D06877000DCCD8 /* ARCViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727625D06875000DCCD8 /* ARCViewerApp.swift */; };
 		1F38728A25D06877000DCCD8 /* ARCViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727625D06875000DCCD8 /* ARCViewerApp.swift */; };
 		1F38728B25D06877000DCCD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F38727725D06875000DCCD8 /* ContentView.swift */; };
@@ -51,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				138F6195260ECDD800E109DB /* SwiftProtobuf in Frameworks */,
+				138F6197260ECDD800E109DB /* FlatBuffers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +70,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		138F6193260ECDD800E109DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1F38727025D06875000DCCD8 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +85,7 @@
 				1F38727F25D06877000DCCD8 /* iOS */,
 				1F38728625D06877000DCCD8 /* macOS */,
 				1F38727E25D06877000DCCD8 /* Products */,
+				138F6193260ECDD800E109DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +157,10 @@
 			dependencies = (
 			);
 			name = "ARCViewer (iOS)";
+			packageProductDependencies = (
+				138F6194260ECDD800E109DB /* SwiftProtobuf */,
+				138F6196260ECDD800E109DB /* FlatBuffers */,
+			);
 			productName = "ARCViewer (iOS)";
 			productReference = 1F38727D25D06877000DCCD8 /* ARCViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -511,6 +527,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		138F6194260ECDD800E109DB /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F44CB1125D7845C00B92BA8 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		138F6196260ECDD800E109DB /* FlatBuffers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F44CB2025D866B200B92BA8 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */;
+			productName = FlatBuffers;
+		};
 		1F44CB1225D7845C00B92BA8 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1F44CB1125D7845C00B92BA8 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
