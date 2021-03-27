@@ -42,8 +42,8 @@
 		1F3872AD25D07476000DCCD8 /* MetalCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCameraView.swift; sourceTree = "<group>"; };
 		1F44CB2A25D8E96C00B92BA8 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../../format/ARC.pb.swift; sourceTree = "<group>"; };
 		1F44CB3125D8E99500B92BA8 /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
-		1F44CB3725D8EBF400B92BA8 /* ARC.fbs */ = {isa = PBXFileReference; lastKnownFileType = text; name = ARC.fbs; path = ../../format/ARC.fbs; sourceTree = "<group>"; };
-		1F44CB3825D8EBF400B92BA8 /* ARC.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; name = ARC.proto; path = ../../format/ARC.proto; sourceTree = "<group>"; };
+		1F44CB3725D8EBF400B92BA8 /* ARC.fbs */ = {isa = PBXFileReference; lastKnownFileType = text; path = ARC.fbs; sourceTree = "<group>"; };
+		1F44CB3825D8EBF400B92BA8 /* ARC.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = ARC.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,8 @@
 				1F44CB3725D8EBF400B92BA8 /* ARC.fbs */,
 				1F44CB3825D8EBF400B92BA8 /* ARC.proto */,
 			);
-			path = Format;
+			name = Format;
+			path = ../format;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
