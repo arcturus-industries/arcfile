@@ -92,7 +92,7 @@ class CaptureController: NSObject {
     
     func startRecording() {
         
-        print(self)
+        
         let url:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let pbUrl = url.appendingPathComponent("testProtobuf.arc")
         let outstream = OutputStream.init(url: pbUrl, append: false)!
@@ -116,7 +116,6 @@ class CaptureController: NSObject {
 
 extension CaptureController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print(self)
         if recording {
             
             
