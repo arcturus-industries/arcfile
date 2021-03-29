@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		13FB2C19260FB8EB0064C396 /* CaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C18260FB8EB0064C396 /* CaptureController.swift */; };
+		13FB2C1C260FC0630064C396 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C1B260FC0630064C396 /* CaptureViewController.swift */; };
+		13FB2C21260FD4BC0064C396 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C1F260FD4BC0064C396 /* ARC.flatbuffers.swift */; };
+		13FB2C22260FD4BC0064C396 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C20260FD4BC0064C396 /* ARC.pb.swift */; };
+		13FB2C26260FD80C0064C396 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C25260FD80C0064C396 /* SwiftProtobuf */; };
+		13FB2C2A260FD82F0064C396 /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C29260FD82F0064C396 /* FlatBuffers */; };
+		13FE4628260F913D00C5AB98 /* ArcRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FE4627260F913D00C5AB98 /* ArcRecorderApp.swift */; };
+		13FE462C260F913F00C5AB98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13FE462B260F913F00C5AB98 /* Assets.xcassets */; };
+		13FE462F260F913F00C5AB98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13FE462E260F913F00C5AB98 /* Preview Assets.xcassets */; };
+		13FE463D260F923100C5AB98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FE4629260F913D00C5AB98 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		13FB2C18260FB8EB0064C396 /* CaptureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureController.swift; sourceTree = "<group>"; };
+		13FB2C1B260FC0630064C396 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		13FB2C1F260FD4BC0064C396 /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
+		13FB2C20260FD4BC0064C396 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../../format/ARC.pb.swift; sourceTree = "<group>"; };
+		13FE4624260F913D00C5AB98 /* ArcRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13FE4627260F913D00C5AB98 /* ArcRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcRecorderApp.swift; sourceTree = "<group>"; };
+		13FE4629260F913D00C5AB98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		13FE462B260F913F00C5AB98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		13FE462E260F913F00C5AB98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		13FE4630260F913F00C5AB98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		13FE4621260F913D00C5AB98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FB2C26260FD80C0064C396 /* SwiftProtobuf in Frameworks */,
+				13FB2C2A260FD82F0064C396 /* FlatBuffers in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13FB2C1E260FD4670064C396 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2C1F260FD4BC0064C396 /* ARC.flatbuffers.swift */,
+				13FB2C20260FD4BC0064C396 /* ARC.pb.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		13FE461B260F913D00C5AB98 = {
+			isa = PBXGroup;
+			children = (
+				13FB2C1E260FD4670064C396 /* Shared */,
+				13FE4626260F913D00C5AB98 /* ArcRecorder */,
+				13FE4625260F913D00C5AB98 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		13FE4625260F913D00C5AB98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13FE4624260F913D00C5AB98 /* ArcRecorder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		13FE4626260F913D00C5AB98 /* ArcRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				13FE4627260F913D00C5AB98 /* ArcRecorderApp.swift */,
+				13FE4629260F913D00C5AB98 /* ContentView.swift */,
+				13FE462B260F913F00C5AB98 /* Assets.xcassets */,
+				13FE4630260F913F00C5AB98 /* Info.plist */,
+				13FE462D260F913F00C5AB98 /* Preview Content */,
+				13FB2C18260FB8EB0064C396 /* CaptureController.swift */,
+				13FB2C1B260FC0630064C396 /* CaptureViewController.swift */,
+			);
+			path = ArcRecorder;
+			sourceTree = "<group>";
+		};
+		13FE462D260F913F00C5AB98 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				13FE462E260F913F00C5AB98 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		13FE4623260F913D00C5AB98 /* ArcRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13FE4633260F913F00C5AB98 /* Build configuration list for PBXNativeTarget "ArcRecorder" */;
+			buildPhases = (
+				13FE4620260F913D00C5AB98 /* Sources */,
+				13FE4621260F913D00C5AB98 /* Frameworks */,
+				13FE4622260F913D00C5AB98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArcRecorder;
+			packageProductDependencies = (
+				13FB2C25260FD80C0064C396 /* SwiftProtobuf */,
+				13FB2C29260FD82F0064C396 /* FlatBuffers */,
+			);
+			productName = ArcRecorder;
+			productReference = 13FE4624260F913D00C5AB98 /* ArcRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		13FE461C260F913D00C5AB98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					13FE4623260F913D00C5AB98 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 13FE461F260F913D00C5AB98 /* Build configuration list for PBXProject "ArcRecorder" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 13FE461B260F913D00C5AB98;
+			packageReferences = (
+				13FB2C24260FD80C0064C396 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				13FB2C28260FD82F0064C396 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */,
+			);
+			productRefGroup = 13FE4625260F913D00C5AB98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13FE4623260F913D00C5AB98 /* ArcRecorder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13FE4622260F913D00C5AB98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FE462F260F913F00C5AB98 /* Preview Assets.xcassets in Resources */,
+				13FE462C260F913F00C5AB98 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13FE4620260F913D00C5AB98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13FB2C21260FD4BC0064C396 /* ARC.flatbuffers.swift in Sources */,
+				13FB2C19260FB8EB0064C396 /* CaptureController.swift in Sources */,
+				13FB2C1C260FC0630064C396 /* CaptureViewController.swift in Sources */,
+				13FB2C22260FD4BC0064C396 /* ARC.pb.swift in Sources */,
+				13FE463D260F923100C5AB98 /* ContentView.swift in Sources */,
+				13FE4628260F913D00C5AB98 /* ArcRecorderApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		13FE4631260F913F00C5AB98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		13FE4632260F913F00C5AB98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		13FE4634260F913F00C5AB98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ArcRecorder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.ArcRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		13FE4635260F913F00C5AB98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ArcRecorder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.ArcRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		13FE461F260F913D00C5AB98 /* Build configuration list for PBXProject "ArcRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13FE4631260F913F00C5AB98 /* Debug */,
+				13FE4632260F913F00C5AB98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13FE4633260F913F00C5AB98 /* Build configuration list for PBXNativeTarget "ArcRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13FE4634260F913F00C5AB98 /* Debug */,
+				13FE4635260F913F00C5AB98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13FB2C24260FD80C0064C396 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		13FB2C28260FD82F0064C396 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/arcturus-industries/flatbuffers-swift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13FB2C25260FD80C0064C396 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13FB2C24260FD80C0064C396 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		13FB2C29260FD82F0064C396 /* FlatBuffers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13FB2C28260FD82F0064C396 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */;
+			productName = FlatBuffers;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 13FE461C260F913D00C5AB98 /* Project object */;
+}
