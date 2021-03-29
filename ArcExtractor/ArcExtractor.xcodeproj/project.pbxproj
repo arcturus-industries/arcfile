@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13180F462611696D0000B4CC /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F442611696D0000B4CC /* ARC.pb.swift */; };
+		13180F472611696D0000B4CC /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F452611696D0000B4CC /* ARC.flatbuffers.swift */; };
 		13FB2C50260FE7580064C396 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C4F260FE7580064C396 /* main.swift */; };
-		13FB2C5A260FE91F0064C396 /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C58260FE91F0064C396 /* ARC.flatbuffers.swift */; };
-		13FB2C5B260FE91F0064C396 /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C59260FE91F0064C396 /* ARC.pb.swift */; };
 		13FB2C5F260FE9A70064C396 /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C5E260FE9A70064C396 /* FlatBuffers */; };
 		13FB2C63260FE9F10064C396 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C62260FE9F10064C396 /* SwiftProtobuf */; };
 /* End PBXBuildFile section */
@@ -27,10 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		13180F442611696D0000B4CC /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../format/ARC.pb.swift; sourceTree = "<group>"; };
+		13180F452611696D0000B4CC /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
 		13FB2C4C260FE7580064C396 /* ArcExtractor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ArcExtractor; sourceTree = BUILT_PRODUCTS_DIR; };
 		13FB2C4F260FE7580064C396 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		13FB2C58260FE91F0064C396 /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
-		13FB2C59260FE91F0064C396 /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../../format/ARC.pb.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +46,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13180F432611695B0000B4CC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				13180F452611696D0000B4CC /* ARC.flatbuffers.swift */,
+				13180F442611696D0000B4CC /* ARC.pb.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		13FB2C43260FE7570064C396 = {
 			isa = PBXGroup;
 			children = (
-				13FB2C57260FE8FD0064C396 /* Shared */,
+				13180F432611695B0000B4CC /* Shared */,
 				13FB2C4E260FE7580064C396 /* ArcExtractor */,
 				13FB2C4D260FE7580064C396 /* Products */,
 			);
@@ -69,15 +78,6 @@
 				13FB2C4F260FE7580064C396 /* main.swift */,
 			);
 			path = ArcExtractor;
-			sourceTree = "<group>";
-		};
-		13FB2C57260FE8FD0064C396 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				13FB2C58260FE91F0064C396 /* ARC.flatbuffers.swift */,
-				13FB2C59260FE91F0064C396 /* ARC.pb.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,9 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13FB2C5B260FE91F0064C396 /* ARC.pb.swift in Sources */,
-				13FB2C5A260FE91F0064C396 /* ARC.flatbuffers.swift in Sources */,
+				13180F472611696D0000B4CC /* ARC.flatbuffers.swift in Sources */,
 				13FB2C50260FE7580064C396 /* main.swift in Sources */,
+				13180F462611696D0000B4CC /* ARC.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
