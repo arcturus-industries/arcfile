@@ -33,9 +33,9 @@ if !FileManager.default.fileExists(atPath: basePath + ".out/") {
 
 let instream = InputStream.init(url: url)!
 instream.open()
-var written = false
 var count = 0
 
+//reuse a single buffer to process all frames
 var _buffer: CVPixelBuffer?
 
 //It would be nice if the image dimensions were in the header.
@@ -56,18 +56,21 @@ while true {
     do {
         let wrappedMsg = try BinaryDelimited.parse(messageType: ARC_WrappedMessage.self, from: instream)
         if(true) {
+            
+            if(wrappedMsg.colorImage.imageEncoding != .rawYuv) {
+                print("Sorry only Raw YUV is supported.")
+                exit(1)
+            }
+            
             let yuvurl = outURL.appendingPathComponent(String(count) + ".yuv")
             let jpgurl = outURL.appendingPathComponent(String(count) + ".jpg")
             try! wrappedMsg.colorImage.imageData.write(to: yuvurl)
-            
-            
-            
-            
             
             let data = wrappedMsg.colorImage.imageData
             
             data.withUnsafeBytes { (ptr: UnsafePointer<UInt32>) in
                 
+                //get offsets of the planes and bytes per row out of the data
                 let rawPtr = UnsafeRawPointer(ptr)
                 let offsets = [Int(ptr[0].byteSwapped),Int(ptr[2].byteSwapped)]
                 let bytesPerRows = [Int(ptr[1].byteSwapped),Int(ptr[3].byteSwapped)]

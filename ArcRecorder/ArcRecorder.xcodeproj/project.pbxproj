@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13180F4C261169930000B4CC /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F4A261169930000B4CC /* ARC.flatbuffers.swift */; };
 		13180F4D261169930000B4CC /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F4B261169930000B4CC /* ARC.pb.swift */; };
+		1362B6E32612B85C00F46400 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1362B6E22612B85C00F46400 /* extensions.swift */; };
 		13FB2C19260FB8EB0064C396 /* CaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C18260FB8EB0064C396 /* CaptureController.swift */; };
 		13FB2C1C260FC0630064C396 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C1B260FC0630064C396 /* CaptureViewController.swift */; };
 		13FB2C26260FD80C0064C396 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C25260FD80C0064C396 /* SwiftProtobuf */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		13180F4A261169930000B4CC /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
 		13180F4B261169930000B4CC /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../format/ARC.pb.swift; sourceTree = "<group>"; };
+		1362B6E22612B85C00F46400 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		13FB2C18260FB8EB0064C396 /* CaptureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureController.swift; sourceTree = "<group>"; };
 		13FB2C1B260FC0630064C396 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		13FE4624260F913D00C5AB98 /* ArcRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +59,7 @@
 		13FE461B260F913D00C5AB98 = {
 			isa = PBXGroup;
 			children = (
+				1362B6E22612B85C00F46400 /* extensions.swift */,
 				13180F49261169770000B4CC /* Shared */,
 				13FE4626260F913D00C5AB98 /* ArcRecorder */,
 				13FE4625260F913D00C5AB98 /* Products */,
@@ -176,6 +179,7 @@
 				13180F4D261169930000B4CC /* ARC.pb.swift in Sources */,
 				13FE463D260F923100C5AB98 /* ContentView.swift in Sources */,
 				13FE4628260F913D00C5AB98 /* ArcRecorderApp.swift in Sources */,
+				1362B6E32612B85C00F46400 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +309,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7VL6H7XJJM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ArcRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -327,7 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7VL6H7XJJM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ArcRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

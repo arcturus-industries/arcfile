@@ -12,13 +12,7 @@ import SwiftProtobuf
 import FlatBuffers
 
 
-extension OutputStream {
-    func write(data: Data) -> Int {
-        return data.withUnsafeBytes {
-            write($0.bindMemory(to: UInt8.self).baseAddress!, maxLength: data.count)
-        }
-    }
-}
+
 
 class CaptureController: NSObject {
     
@@ -60,7 +54,6 @@ class CaptureController: NSObject {
                 
                 captureSession.startRunning()
                 
-                //self.startRecording()
                 
             }
             
@@ -122,11 +115,16 @@ extension CaptureController: AVCaptureVideoDataOutputSampleBufferDelegate {
             
             
             // CMSampleBuffer is automatically memory managed by Swift so this should be okay
-            writeQueue.async {
+            // the pool of CMSampleBuffers will handle this as long as we don't get too far behind
+            writeQueue.async { [weak self] in
                 guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
                     return
                 }
-                print("streaming")
+                guard let self = self else { return }
+                
+                //this should prevent writing after recording has stopped
+                if !self.recording { return }
+                
                 //let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
                 let dataSize = CVPixelBufferGetDataSize(imageBuffer)
                 CVPixelBufferLockBaseAddress(imageBuffer,CVPixelBufferLockFlags(rawValue: 0))
