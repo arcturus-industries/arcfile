@@ -135,6 +135,7 @@ struct ARCViewerApp: App {
                                     
         readTestARCFileProtobuf(fileUrl:pbUrl)
         readTestARCFileFlatBuffers(fileUrl:fbUrl)
+        print("got here")
 
     }
     
