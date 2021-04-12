@@ -57,11 +57,11 @@ class ARCTests: XCTestCase {
      
     }
     
-    func readTestARCFileFlatBuffers(fileUrl:URL)
+    func readTestARCFileFlatBuffers(fileUrl:URL) -> [SHA256Digest]
     {
         let instream = InputStream.init(url: fileUrl)!
         instream.open()
-        
+        var hashes = [SHA256Digest]()
         while true {
             do {
                 
@@ -77,9 +77,14 @@ class ARCTests: XCTestCase {
                 
                 let imageDataBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(header.entrySize))
                 instream.read(imageDataBuffer, maxLength: Int(header.entrySize))
-                let imageData = Data(bytes: imageDataBuffer, count: Int(header.entrySize))
+                let sampleData = Data(bytes: imageDataBuffer, count: Int(header.entrySize))
 
-                let image = arcfile_Image.getRootAsImage(bb: ByteBuffer.init(data: imageData))
+                let image = arcfile_Image.getRootAsImage(bb: ByteBuffer.init(data: sampleData))
+                
+                let p = UnsafeBufferPointer(start:image.imageData, count:image.imageData.count)
+                let imageData = Data(buffer:p)
+                
+                hashes.append(SHA256.hash(data: imageData))
 
                 print("Got image with \(image.imageData.count) bytes")
             }
@@ -87,6 +92,7 @@ class ARCTests: XCTestCase {
         }
 
         instream.close()
+        return hashes
     }
     
     func writeTestARCFileProtobuf(fileUrl:URL) -> SHA256Digest
@@ -156,8 +162,24 @@ class ARCTests: XCTestCase {
         let outputHashes = readTestARCFileProtobuf(fileUrl: pbUrl)
         print(inputHash)
         print(outputHashes)
+        for outputHash in outputHashes {
+            XCTAssert(inputHash.description == outputHash.description)
+        }
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testFlatBuf() throws {
+        let url:URL = FileManager.default.temporaryDirectory
+        let fbUrl = url.appendingPathComponent("testFlatBuf.arc")
+        print(fbUrl)
+        let inputHash = try writeTestARCFileFlatBuffers(fileUrl: fbUrl)
+        let outputHashes = readTestARCFileFlatBuffers(fileUrl: fbUrl)
+        print(inputHash)
+        print(outputHashes)
+        for outputHash in outputHashes {
+            XCTAssert(inputHash.description == outputHash.description)
+        }
     }
 
     func testPerformanceExample() throws {
