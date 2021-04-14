@@ -33,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		137818D7262663C400C7667B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F38727125D06875000DCCD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F38727C25D06877000DCCD8;
+			remoteInfo = "ARCViewer (iOS)";
+		};
 		138F6215260ED6F400E109DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F38727125D06875000DCCD8 /* Project object */;
@@ -190,6 +197,7 @@
 			);
 			dependencies = (
 				138F6216260ED6F400E109DB /* PBXTargetDependency */,
+				137818D8262663C400C7667B /* PBXTargetDependency */,
 			);
 			name = ARCTests;
 			packageProductDependencies = (
@@ -353,6 +361,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		137818D8262663C400C7667B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F38727C25D06877000DCCD8 /* ARCViewer (iOS) */;
+			targetProxy = 137818D7262663C400C7667B /* PBXContainerItemProxy */;
+		};
 		138F6216260ED6F400E109DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F38728425D06877000DCCD8 /* ARCViewer (macOS) */;

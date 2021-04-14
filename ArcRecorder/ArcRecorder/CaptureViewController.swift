@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 
 final class CaptureViewController: UIViewController {
-    var captureController = CaptureController()
+    var captureController = ARC_CaptureSession()
     var previewView: UIView!
     
     override func viewDidLoad() {
