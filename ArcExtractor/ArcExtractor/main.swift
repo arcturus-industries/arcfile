@@ -55,7 +55,7 @@ let buffer = _buffer!
 
 CVPixelBufferLockBaseAddress(buffer, [])
 
-let videoDecoder = LTVideoDecoder(codecType: kCMVideoCodecType_HEVC)
+let videoDecoder = ARCVideoDecoder(codecType: kCMVideoCodecType_HEVC)
 
 while true {
     do {

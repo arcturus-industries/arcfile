@@ -1,8 +1,7 @@
-//
-//  LTVideoEncodingAndDecoding.swift
+// Thanks to Vikas Reddy who generously allowed us to use this code
+// Taken from code created by Vikas Reddy with permission
 //
 //  Created by Vikas Reddy on 5/17/20.
-//  Copyright © 2020 Vikas Reddy. All rights reserved.
 //
 
 //NOTE: This work was inspired by https://github.com/greenpig/VideoToolboxH265Encoder which served as a great initial reference.
@@ -302,9 +301,9 @@ public class ARC_VideoEncoder : NSObject {
 
 
 
-public typealias LTVideoDecoderFinishedHandler = (CVImageBuffer?, CMVideoFormatDescription) -> Void
+public typealias ARCVideoDecoderFinishedHandler = (CVImageBuffer?, CMVideoFormatDescription) -> Void
 
-public class LTVideoDecoder : NSObject {
+public class ARCVideoDecoder : NSObject {
 
     private let decompressionQueue = DispatchQueue(label: "LTVideoDecoder")
 
@@ -313,9 +312,9 @@ public class LTVideoDecoder : NSObject {
     
     
     #if os(iOS)
-        private let decodingLog:OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "LTVideoDecoder")
+        private let decodingLog:OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "ARCVideoDecoder")
     #elseif os(macOS)
-        private let decodingLog:OSLog = OSLog(subsystem: "LTVideoDecoder", category: "LTVideoDecoder")
+        private let decodingLog:OSLog = OSLog(subsystem: "ARCVideoDecoder", category: "ARCVideoDecoder")
     #endif
     
     
@@ -331,7 +330,7 @@ public class LTVideoDecoder : NSObject {
         self.codecType = codecType
     }
     
-    public func decode(imageHeader:[Data], imageData:Data, presentationTimeStamp:CMTime, duration: CMTime, handleFinishedDecoding:@escaping LTVideoDecoderFinishedHandler) -> Void {
+    public func decode(imageHeader:[Data], imageData:Data, presentationTimeStamp:CMTime, duration: CMTime, handleFinishedDecoding:@escaping ARCVideoDecoderFinishedHandler) -> Void {
         
         //self.decompressionQueue.async {
         if(self.formatDescription == nil) {

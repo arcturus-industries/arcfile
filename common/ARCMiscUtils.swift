@@ -1,3 +1,4 @@
+// Thanks to Vikas Reddy who generously allowed us to use this code
 // Taken from code created by Vikas Reddy with permission
 //
 //  Created by Vikas Reddy on 6/22/20.
@@ -420,7 +421,7 @@ public extension AVCaptureDevice {
 
 
 
-public class LTConvenienceObserver: NSObject
+public class ARCConvenienceObserver: NSObject
 {
     
     private var observations = Array<NSKeyValueObservation>()
@@ -446,25 +447,25 @@ public extension DispatchTime {
 }
 
 
-public func LTMiscUtilsCreateDepthTextures(textureCache:CVMetalTextureCache, depthMap:CVImageBuffer, confidenceMap:CVImageBuffer) -> (CVMetalTexture, CVMetalTexture) {
+public func ARCMiscUtilsCreateDepthTextures(textureCache:CVMetalTextureCache, depthMap:CVImageBuffer, confidenceMap:CVImageBuffer) -> (CVMetalTexture, CVMetalTexture) {
     
-    let depthTexture = LTMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: depthMap, pixelFormat: .r32Float, planeIndex: 0)
-    let confidenceTexture = LTMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: confidenceMap, pixelFormat: .r8Uint, planeIndex: 0)
+    let depthTexture = ARCMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: depthMap, pixelFormat: .r32Float, planeIndex: 0)
+    let confidenceTexture = ARCMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: confidenceMap, pixelFormat: .r8Uint, planeIndex: 0)
     
     return (depthTexture!, confidenceTexture!)
 }
 
-public func LTMiscUtilsCreateYandCbCrImageTextures(textureCache:CVMetalTextureCache, imageBuffer: CVImageBuffer) -> (CVMetalTexture, CVMetalTexture) {
+public func ARCMiscUtilsCreateYandCbCrImageTextures(textureCache:CVMetalTextureCache, imageBuffer: CVImageBuffer) -> (CVMetalTexture, CVMetalTexture) {
     // Create two textures (Y and CbCr) from the provided frame's captured image
     assert(CVPixelBufferGetPlaneCount(imageBuffer) == 2)
     
-    let capturedImageTextureY = LTMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: imageBuffer, pixelFormat:.r8Unorm, planeIndex:0)!
-    let capturedImageTextureCbCr = LTMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: imageBuffer, pixelFormat:.rg8Unorm, planeIndex:1)!
+    let capturedImageTextureY = ARCMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: imageBuffer, pixelFormat:.r8Unorm, planeIndex:0)!
+    let capturedImageTextureCbCr = ARCMiscUtilsCreateTexture(textureCache: textureCache, fromPixelBuffer: imageBuffer, pixelFormat:.rg8Unorm, planeIndex:1)!
 
     return (capturedImageTextureY, capturedImageTextureCbCr)
 }
 
-public func LTMiscUtilsCreateTexture(textureCache:CVMetalTextureCache, fromPixelBuffer pixelBuffer: CVPixelBuffer, pixelFormat: MTLPixelFormat, planeIndex: Int) -> CVMetalTexture? {
+public func ARCMiscUtilsCreateTexture(textureCache:CVMetalTextureCache, fromPixelBuffer pixelBuffer: CVPixelBuffer, pixelFormat: MTLPixelFormat, planeIndex: Int) -> CVMetalTexture? {
     let width = CVPixelBufferGetWidthOfPlane(pixelBuffer, planeIndex)
     let height = CVPixelBufferGetHeightOfPlane(pixelBuffer, planeIndex)
     
@@ -481,7 +482,7 @@ public func LTMiscUtilsCreateTexture(textureCache:CVMetalTextureCache, fromPixel
     return texture
 }
 
-public func LTMiscUtilsCreateTextureCache(metalDevice:MTLDevice) -> CVMetalTextureCache
+public func ARCMiscUtilsCreateTextureCache(metalDevice:MTLDevice) -> CVMetalTextureCache
 {
     var textureCache: CVMetalTextureCache?
     CVMetalTextureCacheCreate(nil, nil, metalDevice, nil, &textureCache)
