@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isRecording = false
+    @State private var useHEVC = true
     var body: some View {
-        CaptureView(isRecording: $isRecording)
+        CaptureView(isRecording: $isRecording, useHEVC: $useHEVC)
             .edgesIgnoringSafeArea(.top)
-        Button(action: {
-            isRecording = !isRecording
-        }) {
-            Text(isRecording ? "Stop Recording" : "Start Recording")
+        VStack {
+            Button(action: {
+                isRecording = !isRecording
+            }) {
+                Text(isRecording ? "Stop Recording" : "Start Recording")
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(Color.white)
+            }
+            Toggle("HEVC", isOn: $useHEVC )
                 .padding()
-                .background(Color.red)
-                .foregroundColor(Color.white)
+                .disabled(isRecording)
+                .background(Color.orange)
+                .frame(width: 200, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         }
+        
     }
 }
 

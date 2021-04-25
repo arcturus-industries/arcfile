@@ -311,7 +311,14 @@ public class LTVideoDecoder : NSObject {
     private var decompressionSession: VTDecompressionSession? = nil
     private var formatDescription: CMFormatDescription? = nil
     
-    private let decodingLog:OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "LTVideoDecoder")
+    
+    #if os(iOS)
+        private let decodingLog:OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "LTVideoDecoder")
+    #elseif os(macOS)
+        private let decodingLog:OSLog = OSLog(subsystem: "LTVideoDecoder", category: "LTVideoDecoder")
+    #endif
+    
+    
     
     private var codecType: CMVideoCodecType
     
@@ -399,9 +406,9 @@ public class LTVideoDecoder : NSObject {
                 kCVPixelBufferOpenGLCompatibilityKey: true as CFTypeRef, //TODO: DO we need this?
                 //kCVPixelBufferPlaneAlignmentKey: TODO LOOK INTO,
                 //kCVPixelBufferIOSurfacePropertiesKey: Dictionary<CFString,CFString>() as CFDictionary, //TODO: Do we need this?
-                kCVPixelBufferOpenGLESCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
+                //kCVPixelBufferOpenGLESCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
                 kCVPixelBufferMetalCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
-                kCVPixelBufferOpenGLESTextureCacheCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
+                //kCVPixelBufferOpenGLESTextureCacheCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
             ]
             
             let decodingProperties = [

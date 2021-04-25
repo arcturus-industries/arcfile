@@ -10,9 +10,9 @@
 		13180F4C261169930000B4CC /* ARC.flatbuffers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F4A261169930000B4CC /* ARC.flatbuffers.swift */; };
 		13180F4D261169930000B4CC /* ARC.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13180F4B261169930000B4CC /* ARC.pb.swift */; };
 		1362B6E32612B85C00F46400 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1362B6E22612B85C00F46400 /* extensions.swift */; };
-		137818E92626645000C7667B /* LTMiscUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137818E62626645000C7667B /* LTMiscUtils.swift */; };
-		137818EA2626645000C7667B /* LTVideoEncodingAndDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137818E72626645000C7667B /* LTVideoEncodingAndDecoding.swift */; };
-		137818EB2626645000C7667B /* CVPixelBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137818E82626645000C7667B /* CVPixelBuffer+Extension.swift */; };
+		137819082635E9EC00C7667B /* LTVideoEncodingAndDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137819062635E9EC00C7667B /* LTVideoEncodingAndDecoding.swift */; };
+		137819092635E9EC00C7667B /* LTMiscUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137819072635E9EC00C7667B /* LTMiscUtils.swift */; };
+		137819142635EAF600C7667B /* CVPixelBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137819132635EAF600C7667B /* CVPixelBuffer+Extension.swift */; };
 		13FB2C19260FB8EB0064C396 /* ARC_CaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C18260FB8EB0064C396 /* ARC_CaptureSession.swift */; };
 		13FB2C1C260FC0630064C396 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C1B260FC0630064C396 /* CaptureViewController.swift */; };
 		13FB2C26260FD80C0064C396 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C25260FD80C0064C396 /* SwiftProtobuf */; };
@@ -27,9 +27,9 @@
 		13180F4A261169930000B4CC /* ARC.flatbuffers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.flatbuffers.swift; path = ../format/ARC.flatbuffers.swift; sourceTree = "<group>"; };
 		13180F4B261169930000B4CC /* ARC.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARC.pb.swift; path = ../format/ARC.pb.swift; sourceTree = "<group>"; };
 		1362B6E22612B85C00F46400 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
-		137818E62626645000C7667B /* LTMiscUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMiscUtils.swift; sourceTree = "<group>"; };
-		137818E72626645000C7667B /* LTVideoEncodingAndDecoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVideoEncodingAndDecoding.swift; sourceTree = "<group>"; };
-		137818E82626645000C7667B /* CVPixelBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extension.swift"; sourceTree = "<group>"; };
+		137819062635E9EC00C7667B /* LTVideoEncodingAndDecoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LTVideoEncodingAndDecoding.swift; path = ../common/LTVideoEncodingAndDecoding.swift; sourceTree = "<group>"; };
+		137819072635E9EC00C7667B /* LTMiscUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LTMiscUtils.swift; path = ../common/LTMiscUtils.swift; sourceTree = "<group>"; };
+		137819132635EAF600C7667B /* CVPixelBuffer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Extension.swift"; path = "../common/CVPixelBuffer+Extension.swift"; sourceTree = "<group>"; };
 		13FB2C18260FB8EB0064C396 /* ARC_CaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARC_CaptureSession.swift; sourceTree = "<group>"; };
 		13FB2C1B260FC0630064C396 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		13FE4624260F913D00C5AB98 /* ArcRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +56,9 @@
 		13180F49261169770000B4CC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				137819132635EAF600C7667B /* CVPixelBuffer+Extension.swift */,
+				137819072635E9EC00C7667B /* LTMiscUtils.swift */,
+				137819062635E9EC00C7667B /* LTVideoEncodingAndDecoding.swift */,
 				13180F4A261169930000B4CC /* ARC.flatbuffers.swift */,
 				13180F4B261169930000B4CC /* ARC.pb.swift */,
 			);
@@ -83,9 +86,6 @@
 		13FE4626260F913D00C5AB98 /* ArcRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				137818E82626645000C7667B /* CVPixelBuffer+Extension.swift */,
-				137818E62626645000C7667B /* LTMiscUtils.swift */,
-				137818E72626645000C7667B /* LTVideoEncodingAndDecoding.swift */,
 				13FE4627260F913D00C5AB98 /* ArcRecorderApp.swift */,
 				13FE4629260F913D00C5AB98 /* ContentView.swift */,
 				13FE462B260F913F00C5AB98 /* Assets.xcassets */,
@@ -183,14 +183,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				13180F4C261169930000B4CC /* ARC.flatbuffers.swift in Sources */,
-				137818E92626645000C7667B /* LTMiscUtils.swift in Sources */,
 				13FB2C19260FB8EB0064C396 /* ARC_CaptureSession.swift in Sources */,
 				13FB2C1C260FC0630064C396 /* CaptureViewController.swift in Sources */,
+				137819092635E9EC00C7667B /* LTMiscUtils.swift in Sources */,
 				13180F4D261169930000B4CC /* ARC.pb.swift in Sources */,
 				13FE463D260F923100C5AB98 /* ContentView.swift in Sources */,
 				13FE4628260F913D00C5AB98 /* ArcRecorderApp.swift in Sources */,
-				137818EB2626645000C7667B /* CVPixelBuffer+Extension.swift in Sources */,
-				137818EA2626645000C7667B /* LTVideoEncodingAndDecoding.swift in Sources */,
+				137819142635EAF600C7667B /* CVPixelBuffer+Extension.swift in Sources */,
+				137819082635E9EC00C7667B /* LTVideoEncodingAndDecoding.swift in Sources */,
 				1362B6E32612B85C00F46400 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

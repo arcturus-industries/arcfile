@@ -122,8 +122,8 @@ extension CVPixelBuffer {
             kCVPixelBufferHeightKey: height as CFTypeRef,
             kCVPixelBufferPixelFormatTypeKey: format.unicodeStringValue as CFString,
             kCVPixelBufferMetalCompatibilityKey: true as CFTypeRef,
-            kCVPixelBufferOpenGLESCompatibilityKey: true as CFTypeRef,
-            kCVPixelBufferOpenGLESTextureCacheCompatibilityKey: true as CFTypeRef,
+//            kCVPixelBufferOpenGLESCompatibilityKey: true as CFTypeRef,
+//            kCVPixelBufferOpenGLESTextureCacheCompatibilityKey: true as CFTypeRef,
             kCVPixelBufferIOSurfacePropertiesKey: Dictionary<CFString,CFString>() as CFDictionary
         ]
         

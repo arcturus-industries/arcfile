@@ -176,6 +176,8 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                 
                 let colorEncodingDoneSemapahore = DispatchSemaphore(value:0)
                 
+                
+                
                 let _ = self.videoEncoder!.encode(
                     imageBuffer: imageBuffer,
                     presentationTimeStamp: presentationTimestamp,
@@ -185,7 +187,12 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                     
                     
                     let numParameterSets:Int = parameterSets.count
-                    imageFrame.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
+                    
+                    var image = ARC_ColorImage()
+                    image.imageEncoding = ARC_ImageEncoding.hevc
+                    image.timestampInSeconds = 0
+                    
+                    image.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
 
                     for index in 0..<numParameterSets
                     {
@@ -197,7 +204,7 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                         }
 
                         //NOTE: parameterData is an UnsafePointer<UInt8>
-                        imageFrame.imageHeader[index] = Data(
+                        image.imageHeader[index] = Data(
                             bytesNoCopy: UnsafeMutableRawPointer(mutating: parameterData),
                             count: parameterSet.parameterDataSizeInBytes,
                             deallocator: Data.Deallocator.none)
@@ -207,9 +214,7 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                     
                     
                     let d = Data(bytesNoCopy: imageDataPtr, count: totalLength, deallocator: .none)
-                    var image = ARC_ColorImage()
-                    image.imageEncoding = ARC_ImageEncoding.hevc
-                    image.timestampInSeconds = 0
+                    
                     image.imageData = d
                     var wrappedMsg = ARC_WrappedMessage()
                     wrappedMsg.colorImage = image
