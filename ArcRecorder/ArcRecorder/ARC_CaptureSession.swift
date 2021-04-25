@@ -184,6 +184,28 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                 {   (parameterSets:Array<(parameterSetCount: Int, parameterData: UnsafePointer<UInt8>?, parameterDataSizeInBytes: Int)>, imageDataPtr:UnsafeMutablePointer<Int8>, totalLength:Int, encodedSampleBuffer: CMSampleBuffer?, videoFormatDescription:CMVideoFormatDescription) in
                     
                     
+                    let numParameterSets:Int = parameterSets.count
+                    imageFrame.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
+
+                    for index in 0..<numParameterSets
+                    {
+                        let parameterSet = parameterSets[index]
+
+                        guard let parameterData = parameterSet.parameterData else {
+                            assertionFailure("problem with parameter sets")
+                            continue
+                        }
+
+                        //NOTE: parameterData is an UnsafePointer<UInt8>
+                        imageFrame.imageHeader[index] = Data(
+                            bytesNoCopy: UnsafeMutableRawPointer(mutating: parameterData),
+                            count: parameterSet.parameterDataSizeInBytes,
+                            deallocator: Data.Deallocator.none)
+
+                        //lt_log("Header index: %d, SHA256: %@", log: self.encodingLog, index, Get_SHA256_Hash_String(messageData:imageFrame.imageHeader[index]))
+                    }
+                    
+                    
                     let d = Data(bytesNoCopy: imageDataPtr, count: totalLength, deallocator: .none)
                     var image = ARC_ColorImage()
                     image.imageEncoding = ARC_ImageEncoding.hevc
