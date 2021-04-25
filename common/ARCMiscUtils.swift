@@ -1,9 +1,6 @@
-//
-//  LTUtils.swift
-//  LTSensorAcquisition
+// Taken from code created by Vikas Reddy with permission
 //
 //  Created by Vikas Reddy on 6/22/20.
-//  Copyright © 2020 Vikas Reddy. All rights reserved.
 //
 
 import Foundation
