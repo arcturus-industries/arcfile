@@ -85,6 +85,22 @@ public class ARC_VideoEncoder : NSObject {
                 let bitsPerPixelTarget:Float = Float(width) * Float(height) * SWAGCompressionFactor
                 let bitsPerSecondTarget:Int32 = Int32(bitsPerPixelTarget * fpsHint)
                 
+                
+                
+                #if os(macOS)
+                let properties = [
+                    kVTCompressionPropertyKey_ProfileLevel: self.profileLevelToUse,
+                    kVTCompressionPropertyKey_RealTime: true as CFTypeRef,
+                    kVTCompressionPropertyKey_AllowFrameReordering: false as CFTypeRef,
+                    kVTCompressionPropertyKey_YCbCrMatrix: kCMFormatDescriptionYCbCrMatrix_ITU_R_601_4,
+                    kVTCompressionPropertyKey_MaxKeyFrameInterval: 5 as CFTypeRef,
+                    kVTCompressionPropertyKey_AverageBitRate: bitsPerSecondTarget as CFTypeRef,
+                    kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder: true as CFTypeRef,
+                    kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder: true as CFTypeRef,
+                    //kVTCompressionPropertyKey_DataRateLimits: [width * height * 2 * 4, 1] as CFArray //IMPORTANT WARNING: THIS CAN POTENTIALLY CAUSE DELIVERED FRAMES TO BE NULL IF DATA RATE IS EXCEEDED!!!!
+                ]
+                
+                #elseif os(iOS)
                 let properties = [
                     kVTCompressionPropertyKey_ProfileLevel: self.profileLevelToUse,
                     kVTCompressionPropertyKey_RealTime: true as CFTypeRef,
@@ -94,6 +110,9 @@ public class ARC_VideoEncoder : NSObject {
                     kVTCompressionPropertyKey_AverageBitRate: bitsPerSecondTarget as CFTypeRef,
                     //kVTCompressionPropertyKey_DataRateLimits: [width * height * 2 * 4, 1] as CFArray //IMPORTANT WARNING: THIS CAN POTENTIALLY CAUSE DELIVERED FRAMES TO BE NULL IF DATA RATE IS EXCEEDED!!!!
                 ]
+                #endif
+                
+                
                 RunAndCheckOSStatus({ () -> OSStatus in
                 VTSessionSetProperties(c, propertyDictionary: properties as CFDictionary)
                 })
@@ -409,15 +428,25 @@ public class ARCVideoDecoder : NSObject {
                 kCVPixelBufferMetalCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
                 //kCVPixelBufferOpenGLESTextureCacheCompatibilityKey: true as CFTypeRef, //TODO LOOK INTO,
             ]
-            
+            #if os(macOS)
             let decodingProperties = [
                 kVTDecompressionPropertyKey_RealTime: true as CFTypeRef,
                 
                 //the following only seem to work on OSX? Any way to force hardware acceleration?
-                //kVTVideoDecoderSpecification_EnableHardwareAcceleratedVideoDecoder
-                //kVTVideoDecoderSpecification_RequireHardwareAcceleratedVideoDecoder
+                kVTVideoDecoderSpecification_EnableHardwareAcceleratedVideoDecoder: true as CFTypeRef,
+                kVTDecompressionPropertyKey_UsingHardwareAcceleratedVideoDecoder: true as CFTypeRef,
+            
+               
             ]
-
+            
+            #elseif os(iOS)
+            let decodingProperties = [
+                kVTDecompressionPropertyKey_RealTime: true as CFTypeRef,
+            
+            
+               
+            ]
+            #endif
             RunAndCheckOSStatus({ () -> OSStatus in
                 VTDecompressionSessionCreate(
                     allocator: nil,
