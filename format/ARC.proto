@@ -21,6 +21,7 @@ enum ARC_ImageEncoding {
 
 message ARC_ColorImage {
     ARC_ImageEncoding image_encoding = 1;
-    bytes image_data = 2;
-    double timestamp_in_seconds = 3;
+    repeated bytes image_header = 2;
+    bytes image_data = 3;
+    double timestamp_in_seconds = 4;
 }

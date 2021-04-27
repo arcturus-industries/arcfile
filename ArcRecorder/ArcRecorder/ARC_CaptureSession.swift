@@ -14,7 +14,7 @@ import FlatBuffers
 
 
 
-class CaptureController: NSObject {
+class ARC_CaptureSession: NSObject {
     
     enum CaptureControllerError: Error {
         case configurationError
@@ -27,11 +27,22 @@ class CaptureController: NSObject {
     var previewLayer: AVCaptureVideoPreviewLayer?
     var outStream: OutputStream?
     var recording: Bool = false
+    var hevc: Bool = true
     let writeQueue = DispatchQueue(label: "writeQueue")
     var count = 0
     
+    private var maxFrameDuration:Double = 0
+    private var minFrameDuration:Double = 0
+    private var avgFPS:Float = 0
+    
+    private let videoEncodingFormatToUse = kCMVideoCodecType_HEVC
+    private var videoEncoder:ARC_VideoEncoder? = nil
+    
     func configure(done: @escaping (Error?) -> Void) {
         print("configuring")
+        
+        self.videoEncoder = ARC_VideoEncoder(codecType: videoEncodingFormatToUse)
+        
         DispatchQueue(label: "initCamera").async {
             do {
                 print("configuring2")
@@ -51,6 +62,10 @@ class CaptureController: NSObject {
                 
                 //maybe check if this can happen before doing it
                 captureSession.addOutput(captureOutput)
+                
+                self.maxFrameDuration = captureDevice.activeVideoMaxFrameDuration.seconds
+                self.minFrameDuration = captureDevice.activeVideoMinFrameDuration.seconds
+                self.avgFPS = 1.0 / ((Float(self.maxFrameDuration) + Float(self.minFrameDuration)) / 2.0)
                 
                 captureSession.startRunning()
                 
@@ -107,9 +122,9 @@ class CaptureController: NSObject {
 }
 
 
-extension CaptureController: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if recording {
+        if recording && self.hevc == false {
             
             
             
@@ -146,9 +161,73 @@ extension CaptureController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: 0))
             }
             
-            
-            
-            
+        }
+        else if recording {
+            writeQueue.async { [weak self] in
+                guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+                    return
+                }
+                
+                guard let self = self else { return }
+                
+                let presentationTimestamp = CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer)
+                
+                let duration = CMSampleBufferGetOutputDuration(sampleBuffer)
+                
+                let colorEncodingDoneSemapahore = DispatchSemaphore(value:0)
+                
+                
+                
+                let _ = self.videoEncoder!.encode(
+                    imageBuffer: imageBuffer,
+                    presentationTimeStamp: presentationTimestamp,
+                    duration: duration,
+                    fpsHint: self.avgFPS)
+                {   (parameterSets:Array<(parameterSetCount: Int, parameterData: UnsafePointer<UInt8>?, parameterDataSizeInBytes: Int)>, imageDataPtr:UnsafeMutablePointer<Int8>, totalLength:Int, encodedSampleBuffer: CMSampleBuffer?, videoFormatDescription:CMVideoFormatDescription) in
+                    
+                    
+                    let numParameterSets:Int = parameterSets.count
+                    
+                    var image = ARC_ColorImage()
+                    image.imageEncoding = ARC_ImageEncoding.hevc
+                    image.timestampInSeconds = 0
+                    
+                    image.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
+
+                    for index in 0..<numParameterSets
+                    {
+                        let parameterSet = parameterSets[index]
+
+                        guard let parameterData = parameterSet.parameterData else {
+                            assertionFailure("problem with parameter sets")
+                            continue
+                        }
+
+                        //NOTE: parameterData is an UnsafePointer<UInt8>
+                        image.imageHeader[index] = Data(
+                            bytesNoCopy: UnsafeMutableRawPointer(mutating: parameterData),
+                            count: parameterSet.parameterDataSizeInBytes,
+                            deallocator: Data.Deallocator.none)
+
+                        //lt_log("Header index: %d, SHA256: %@", log: self.encodingLog, index, Get_SHA256_Hash_String(messageData:imageFrame.imageHeader[index]))
+                    }
+                    
+                    
+                    let d = Data(bytesNoCopy: imageDataPtr, count: totalLength, deallocator: .none)
+                    
+                    image.imageData = d
+                    var wrappedMsg = ARC_WrappedMessage()
+                    wrappedMsg.colorImage = image
+                    try! BinaryDelimited.serialize(message: wrappedMsg, to: self.outStream!)
+                    
+                    
+                    
+                    colorEncodingDoneSemapahore.signal()
+                    
+                }
+                
+                colorEncodingDoneSemapahore.wait()
+            }
         }
         
         

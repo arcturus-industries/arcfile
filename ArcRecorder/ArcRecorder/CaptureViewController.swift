@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 
 final class CaptureViewController: UIViewController {
-    var captureController = CaptureController()
+    var captureController = ARC_CaptureSession()
     var previewView: UIView!
     
     override func viewDidLoad() {
@@ -33,12 +33,16 @@ struct CaptureView : UIViewControllerRepresentable {
     typealias UIViewControllerType = CaptureViewController
     
     @Binding var isRecording: Bool
+    @Binding var useHEVC: Bool
     
     func makeUIViewController(context: Context) -> CaptureViewController {
         return CaptureViewController()
     }
     
     func updateUIViewController(_ uiViewController: CaptureViewController, context: Context) {
+        
+        uiViewController.captureController.hevc = useHEVC
+        
         if(isRecording) {
             uiViewController.captureController.startRecording()
         }
