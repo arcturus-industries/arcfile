@@ -1,7 +1,7 @@
-// Thanks to Vikas Reddy who generously allowed us to use this code
-// Taken from code created by Vikas Reddy with permission
+// Thanks to Vikas Reddy/LightTwist who generously allowed us to use this code
+// Taken from MIT licensed code created by Vikas Reddy/LightTwist
 //
-//  Created by Vikas Reddy on 5/17/20.
+// Created by Vikas Reddy on 5/17/20.
 //
 
 //NOTE: This work was inspired by https://github.com/greenpig/VideoToolboxH265Encoder which served as a great initial reference.

@@ -1,7 +1,7 @@
-// Thanks to Vikas Reddy who generously allowed us to use this code
-// Taken from code created by Vikas Reddy with permission
+// Thanks to Vikas Reddy/LightTwist who generously allowed us to use this code
+// Taken from MIT licensed code created by Vikas Reddy/LightTwist
 //
-//  Created by Vikas Reddy on 6/22/20.
+// Created by Vikas Reddy on 6/22/20.
 //
 
 import Foundation
