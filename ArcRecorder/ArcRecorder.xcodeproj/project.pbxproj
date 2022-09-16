@@ -386,8 +386,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				minimumVersion = 1.15.0;
 			};
 		};
 		13FB2C28260FD82F0064C396 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */ = {
