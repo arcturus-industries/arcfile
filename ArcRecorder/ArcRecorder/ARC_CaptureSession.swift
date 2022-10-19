@@ -138,12 +138,19 @@ class ARC_CaptureSession: NSObject {
     }
     func startRecording() {
         do {
+            
+            let currentTime = Date()
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .medium
+            dateFormatter.dateStyle = .long
+            
             try self.captureDevice?.lockForConfiguration()
             self.captureDevice?.setFocusModeLocked(lensPosition: self.captureDevice!.lensPosition)
             self.captureDevice?.unlockForConfiguration()
             
             let url:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let pbUrl = url.appendingPathComponent("testProtobuf.arc")
+            let pbUrl = url.appendingPathComponent(dateFormatter.string(from: currentTime) + ".arc")
             let outstream = OutputStream.init(url: pbUrl, append: false)!
             outstream.open()
             self.outStream = outstream
