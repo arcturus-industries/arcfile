@@ -45,16 +45,34 @@ class ARC_CaptureSession: NSObject {
         
         DispatchQueue(label: "initCamera").async {
             do {
+                self.captureSession?.stopRunning()
                 print("configuring2")
                 self.captureSession = AVCaptureSession()
                 
-                self.captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
+                self.captureDevice = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back)
                 try self.captureDevice?.lockForConfiguration()
+                //self.captureDevice?.setFocusModeLocked(lensPosition: 1.0)
+                print("self.captureDevice?.activeFormat.maxExposureDuration " + String(self.captureDevice!.activeFormat.maxExposureDuration.seconds) + " self.captureDevice?.activeFormat.minExposureDuration " + String(self.captureDevice!.activeFormat.minExposureDuration.seconds) )
+                //self.captureDevice?.activeMaxExposureDuration = CMTimeMakeWithSeconds(0.008, preferredTimescale: 1)
+                self.captureDevice?.setExposureModeCustom(duration: CMTimeMake(value: 5, timescale: 1000), iso: 500.0)
                 self.captureDevice?.unlockForConfiguration()
                 guard let captureSession = self.captureSession else { throw CaptureControllerError.configurationError }
                 guard let captureDevice = self.captureDevice else { throw CaptureControllerError.configurationError }
                 self.deviceInput = try AVCaptureDeviceInput(device: captureDevice)
                 captureSession.addInput(self.deviceInput!)
+                captureSession.sessionPreset = .high
+                for format in self.captureDevice!.formats
+                {
+                    
+                    print("format: width:\(format.formatDescription)")
+                    if(format.formatDescription.dimensions.height == 3024 && format.formatDescription.mediaSubType == .init(string: "420f"))
+                    {
+                        try self.captureDevice?.lockForConfiguration()
+                        self.captureDevice?.activeFormat = format
+                        self.captureDevice?.unlockForConfiguration()
+                    }
+                }
+                
                 
                 let captureOutput = AVCaptureVideoDataOutput()
                 let captureQueue = DispatchQueue(label: "captureQueue", qos: .userInteractive)
@@ -97,24 +115,86 @@ class ARC_CaptureSession: NSObject {
         view.layer.insertSublayer(self.previewLayer!, at: 0)
         self.previewLayer?.frame = view.frame
     }
-    
+    func updateExposure(exposure: Int)
+    {
+        if let device = self.captureDevice
+        {
+            do {
+                try self.captureDevice?.lockForConfiguration()
+                //self.captureDevice?.setFocusModeLocked(lensPosition: 1.0)
+                print("self.captureDevice?.activeFormat.maxExposureDuration " + String(self.captureDevice!.activeFormat.maxExposureDuration.seconds) + " self.captureDevice?.activeFormat.minExposureDuration " + String(self.captureDevice!.activeFormat.minExposureDuration.seconds) )
+                //self.captureDevice?.activeMaxExposureDuration = CMTimeMakeWithSeconds(0.008, preferredTimescale: 1)
+                self.captureDevice?.setExposureModeCustom(duration: CMTimeMake(value: Int64(exposure), timescale: 4000), iso: 500.0)
+                self.captureDevice?.unlockForConfiguration()
+            }
+            catch {
+                DispatchQueue.main.async {
+                    print(error)
+                    exit(1)
+                }
+            }
+        }
+        
+    }
     func startRecording() {
+        do {
+            try self.captureDevice?.lockForConfiguration()
+            self.captureDevice?.setFocusModeLocked(lensPosition: self.captureDevice!.lensPosition)
+            self.captureDevice?.unlockForConfiguration()
+            
+            let url:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let pbUrl = url.appendingPathComponent("testProtobuf.arc")
+            let outstream = OutputStream.init(url: pbUrl, append: false)!
+            outstream.open()
+            self.outStream = outstream
+            recording = true
+        }
+        catch {
+            DispatchQueue.main.async {
+                print(error)
+                exit(1)
+            }
+            
+        }
         
-        
-        let url:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let pbUrl = url.appendingPathComponent("testProtobuf.arc")
-        let outstream = OutputStream.init(url: pbUrl, append: false)!
-        outstream.open()
-        self.outStream = outstream
-        recording = true
         
     }
     func stopRecording() {
+        if(self.recording) {
+            do {
+                try self.captureDevice?.lockForConfiguration()
+                self.captureDevice?.focusMode = .autoFocus
+                self.captureDevice?.unlockForConfiguration()
+                
+                writeQueue.async { [weak self] in
+                    self?.recording = false
+                }
+                writeQueue.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    self?.outStream?.close()
+                    
+                }
+            }
+            catch {
+                DispatchQueue.main.async {
+                    print(error)
+                    exit(1)
+                }
+                
+            }
+        }
         
-        
-        writeQueue.async { [weak self] in
-            self?.recording = false
-            self?.outStream?.close()
+    }
+    func focusOnce() {
+        do {
+            try self.captureDevice?.lockForConfiguration()
+            self.captureDevice?.focusMode = .autoFocus
+            self.captureDevice?.unlockForConfiguration()
+        }
+        catch {
+            DispatchQueue.main.async {
+                print(error)
+                exit(1)
+            }
             
         }
         
@@ -177,56 +257,60 @@ extension ARC_CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
                 let colorEncodingDoneSemapahore = DispatchSemaphore(value:0)
                 
                 
-                
-                let _ = self.videoEncoder!.encode(
-                    imageBuffer: imageBuffer,
-                    presentationTimeStamp: presentationTimestamp,
-                    duration: duration,
-                    fpsHint: self.avgFPS)
-                {   (parameterSets:Array<(parameterSetCount: Int, parameterData: UnsafePointer<UInt8>?, parameterDataSizeInBytes: Int)>, imageDataPtr:UnsafeMutablePointer<Int8>, totalLength:Int, encodedSampleBuffer: CMSampleBuffer?, videoFormatDescription:CMVideoFormatDescription) in
-                    
-                    
-                    let numParameterSets:Int = parameterSets.count
-                    
-                    var image = ARC_ColorImage()
-                    image.imageEncoding = ARC_ImageEncoding.hevc
-                    image.timestampInSeconds = 0
-                    
-                    image.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
-
-                    for index in 0..<numParameterSets
-                    {
-                        let parameterSet = parameterSets[index]
-
-                        guard let parameterData = parameterSet.parameterData else {
-                            assertionFailure("problem with parameter sets")
-                            continue
+                self.count = self.count + 1
+                if(self.count % 5 == 0) {
+                    let _ = self.videoEncoder!.encode(
+                        imageBuffer: imageBuffer,
+                        presentationTimeStamp: presentationTimestamp,
+                        duration: duration,
+                        fpsHint: self.avgFPS)
+                    {   (parameterSets:Array<(parameterSetCount: Int, parameterData: UnsafePointer<UInt8>?, parameterDataSizeInBytes: Int)>, imageDataPtr:UnsafeMutablePointer<Int8>, totalLength:Int, encodedSampleBuffer: CMSampleBuffer?, videoFormatDescription:CMVideoFormatDescription) in
+                        
+                        
+                        let numParameterSets:Int = parameterSets.count
+                        
+                        var image = ARC_ColorImage()
+                        image.imageEncoding = ARC_ImageEncoding.hevc
+                        image.timestampInSeconds = 0
+                        
+                        image.imageHeader = Array<Data>(repeating: SwiftProtobuf.Internal.emptyData, count: numParameterSets)
+                        
+                        for index in 0..<numParameterSets
+                        {
+                            let parameterSet = parameterSets[index]
+                            
+                            guard let parameterData = parameterSet.parameterData else {
+                                assertionFailure("problem with parameter sets")
+                                continue
+                            }
+                            
+                            //NOTE: parameterData is an UnsafePointer<UInt8>
+                            image.imageHeader[index] = Data(
+                                bytesNoCopy: UnsafeMutableRawPointer(mutating: parameterData),
+                                count: parameterSet.parameterDataSizeInBytes,
+                                deallocator: Data.Deallocator.none)
+                            
+                            //lt_log("Header index: %d, SHA256: %@", log: self.encodingLog, index, Get_SHA256_Hash_String(messageData:imageFrame.imageHeader[index]))
                         }
-
-                        //NOTE: parameterData is an UnsafePointer<UInt8>
-                        image.imageHeader[index] = Data(
-                            bytesNoCopy: UnsafeMutableRawPointer(mutating: parameterData),
-                            count: parameterSet.parameterDataSizeInBytes,
-                            deallocator: Data.Deallocator.none)
-
-                        //lt_log("Header index: %d, SHA256: %@", log: self.encodingLog, index, Get_SHA256_Hash_String(messageData:imageFrame.imageHeader[index]))
+                        
+                        
+                        let d = Data(bytesNoCopy: imageDataPtr, count: totalLength, deallocator: .none)
+                        
+                        image.imageData = d
+                        var wrappedMsg = ARC_WrappedMessage()
+                        wrappedMsg.colorImage = image
+                        print("serializing \(self.count)")
+                        
+                        try! BinaryDelimited.serialize(message: wrappedMsg, to: self.outStream!)
+                        
+                        
+                        
+                        colorEncodingDoneSemapahore.signal()
+                        
                     }
                     
-                    
-                    let d = Data(bytesNoCopy: imageDataPtr, count: totalLength, deallocator: .none)
-                    
-                    image.imageData = d
-                    var wrappedMsg = ARC_WrappedMessage()
-                    wrappedMsg.colorImage = image
-                    try! BinaryDelimited.serialize(message: wrappedMsg, to: self.outStream!)
-                    
-                    
-                    
-                    colorEncodingDoneSemapahore.signal()
-                    
+                    colorEncodingDoneSemapahore.wait()
                 }
-                
-                colorEncodingDoneSemapahore.wait()
             }
         }
         

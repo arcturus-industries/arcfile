@@ -17,7 +17,7 @@ import os.log
 private let EXPECTED_NALUNITHEADER_LENGTH:Int32 = 4 //seems like what it is for HEVC checking it on a few images, what is it for H264?
 
 //TODO: Verify this is always the case
-private let EXPECTED_PARAMETER_SETS_HEVC:Int = 4
+private let EXPECTED_PARAMETER_SETS_HEVC:Int = 3
 private let EXPECTED_PARAMETER_SETS_H264:Int = 2
 
 public typealias LTVideoEncoderFinishedHandler = (_:Array<(parameterSetCount: Int, parameterData: UnsafePointer<UInt8>?, parameterDataSizeInBytes: Int)>, _:UnsafeMutablePointer<Int8>, _:Int, _:CMSampleBuffer?, _:CMVideoFormatDescription) -> Void

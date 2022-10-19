@@ -321,7 +321,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5ASDVLPV8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ArcRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -343,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ArcRecorder/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5ASDVLPV8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ArcRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -385,10 +385,6 @@
 		13FB2C24260FD80C0064C396 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
-			requirement = {
-				kind = exactVersion;
-				minimumVersion = 1.15.0;
-			};
 		};
 		13FB2C28260FD82F0064C396 /* XCRemoteSwiftPackageReference "flatbuffers-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;

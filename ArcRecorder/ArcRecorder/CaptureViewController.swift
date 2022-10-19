@@ -34,6 +34,8 @@ struct CaptureView : UIViewControllerRepresentable {
     
     @Binding var isRecording: Bool
     @Binding var useHEVC: Bool
+    @Binding var focusNeeded: Bool
+    @Binding var exposureIn4000thSecond: Int
     
     func makeUIViewController(context: Context) -> CaptureViewController {
         return CaptureViewController()
@@ -49,6 +51,15 @@ struct CaptureView : UIViewControllerRepresentable {
         else {
             uiViewController.captureController.stopRecording()
         }
+        
+        if(focusNeeded) {
+            uiViewController.captureController.focusOnce()
+            print("did focus once")
+            DispatchQueue.main.async {
+                focusNeeded = false
+            }
+        }
+        uiViewController.captureController.updateExposure(exposure: exposureIn4000thSecond)
     }
     
     

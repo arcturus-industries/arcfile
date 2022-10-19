@@ -34,6 +34,11 @@ if !FileManager.default.fileExists(atPath: basePath + ".out/") {
     }
 }
 
+if !FileManager.default.fileExists(atPath: basePath ) {
+    print("Sorry input file doesn't exist at " + basePath)
+    exit(1)
+}
+
 let instream = InputStream.init(url: url)!
 instream.open()
 var count = 0
@@ -132,7 +137,7 @@ while true {
 
                     let context = CIContext.init()
                     let space = CGColorSpace(name: CGColorSpace.sRGB)
-                    try! context.writeJPEGRepresentation(of: ciImage, to:jpgurl, colorSpace: space!, options: [:])
+                    try! context.writeJPEGRepresentation(of: ciImage, to:jpgurl, colorSpace: space!, options: [CIImageRepresentationOption.init(rawValue: kCGImageDestinationLossyCompressionQuality as String):1.0])
                     
                     
                     doneDecoding.signal()

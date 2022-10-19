@@ -12,12 +12,23 @@
 		137819042635E97D00C7667B /* ARCVideoEncodingAndDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137819032635E97D00C7667B /* ARCVideoEncodingAndDecoding.swift */; };
 		1378190C2635EA5E00C7667B /* ARCMiscUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378190B2635EA5E00C7667B /* ARCMiscUtils.swift */; };
 		137819172635EAFF00C7667B /* CVPixelBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137819162635EAFF00C7667B /* CVPixelBuffer+Extension.swift */; };
+		138C300228E7961C005693A3 /* ArcExtractor in CopyFiles */ = {isa = PBXBuildFile; fileRef = 13FB2C4C260FE7580064C396 /* ArcExtractor */; };
 		13FB2C50260FE7580064C396 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2C4F260FE7580064C396 /* main.swift */; };
 		13FB2C5F260FE9A70064C396 /* FlatBuffers in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C5E260FE9A70064C396 /* FlatBuffers */; };
 		13FB2C63260FE9F10064C396 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 13FB2C62260FE9F10064C396 /* SwiftProtobuf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		138C300128E795ED005693A3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /Users/abryden/code/arcfile/build;
+			dstSubfolderSpec = 0;
+			files = (
+				138C300228E7961C005693A3 /* ArcExtractor in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13FB2C4A260FE7570064C396 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +110,7 @@
 				13FB2C48260FE7570064C396 /* Sources */,
 				13FB2C49260FE7570064C396 /* Frameworks */,
 				13FB2C4A260FE7570064C396 /* CopyFiles */,
+				138C300128E795ED005693A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

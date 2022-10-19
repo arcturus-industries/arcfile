@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "flatbuffers-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/arcturus-industries/flatbuffers-swift.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d825d50f2ca637132f25fb28977432a2ec72c416"
+      }
+    },
+    {
+      "identity" : "swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-protobuf.git",
+      "state" : {
+        "revision" : "e1904bf5a5f79cb7e0ff68a427a53a93b652fcd1",
+        "version" : "1.15.0"
+      }
+    }
+  ],
+  "version" : 2
+}
