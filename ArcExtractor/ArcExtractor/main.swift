@@ -132,12 +132,13 @@ while true {
                     
                     
                     //imageFrame.deviceMotion =
-                    
-                    let ciImage = CIImage(cvPixelBuffer: imageBuffer!)
-
-                    let context = CIContext.init()
-                    let space = CGColorSpace(name: CGColorSpace.sRGB)
-                    try! context.writeJPEGRepresentation(of: ciImage, to:jpgurl, colorSpace: space!, options: [CIImageRepresentationOption.init(rawValue: kCGImageDestinationLossyCompressionQuality as String):1.0])
+                    if let imageBuffer = imageBuffer {
+                        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+                            
+                            let context = CIContext.init()
+                            let space = CGColorSpace(name: CGColorSpace.sRGB)
+                            try! context.writeJPEGRepresentation(of: ciImage, to:jpgurl, colorSpace: space!, options: [CIImageRepresentationOption.init(rawValue: kCGImageDestinationLossyCompressionQuality as String):1.0])
+                    }
                     
                     
                     doneDecoding.signal()
