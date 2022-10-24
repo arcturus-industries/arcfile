@@ -22,7 +22,7 @@
 		138C300128E795ED005693A3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /Users/abryden/code/arcfile/build;
+			dstPath = "${PROJECT_DIR}/../build";
 			dstSubfolderSpec = 0;
 			files = (
 				138C300228E7961C005693A3 /* ArcExtractor in CopyFiles */,
