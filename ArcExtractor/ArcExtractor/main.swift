@@ -23,20 +23,24 @@ if CommandLine.arguments.count < 2 {
 
 let basePath = CommandLine.arguments[1]
 let url = URL(fileURLWithPath: basePath)
-let outURL = URL(fileURLWithPath: basePath+".out/")
-
-if !FileManager.default.fileExists(atPath: basePath + ".out/") {
-    do {
-        try FileManager.default.createDirectory(atPath: basePath + ".out/", withIntermediateDirectories: true, attributes: nil)
-        
-    } catch {
-        print(error.localizedDescription);
-    }
+var outPath = basePath+".out/"
+if CommandLine.arguments.count > 2 {
+    outPath = CommandLine.arguments[2]
 }
+let outURL = URL(fileURLWithPath: outPath)
 
 if !FileManager.default.fileExists(atPath: basePath ) {
     print("Sorry input file doesn't exist at " + basePath)
     exit(1)
+}
+
+if !FileManager.default.fileExists(atPath: outPath) {
+    do {
+        try FileManager.default.createDirectory(atPath: outPath, withIntermediateDirectories: true, attributes: nil)
+        
+    } catch {
+        print(error.localizedDescription);
+    }
 }
 
 let instream = InputStream.init(url: url)!
